@@ -1,0 +1,23 @@
+header{
+    width: 100%;
+    height: 15vh;
+    background-color: #20bf6b;
+    margin-top: -30px;
+}
+
+h1{
+    color:white;
+    font-size: 1.8rem;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    text-shadow: 0 30px 5px rgb(0, 0, 0.1);
+    text-align: center;
+}
+
+section{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #7bed9f;
+}

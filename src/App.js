@@ -1,9 +1,11 @@
-import './App.css';
+// import './App.css';
+import WordGame from './game/WordGame';
 
 function App() {
   return (
-    <div className="App">
-    </div>
+    <>
+      <WordGame />
+    </>
   );
 }
 
