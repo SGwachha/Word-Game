@@ -1,10 +1,24 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import "./WrodGame.css";
 
 const WordGame = () => {
+  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+const onSubmit = data =>
+
+{console.log(data);
+if(data.inputName==="hasina"){
+  console.log("hii")
+}
+else{
+  console.log("bye")
+}
+
+}
   const [play, setPlay] = useState(false);
   const [input, setInput] = useState();
   const [show, setShow] = useState(false);
+  const [msg, setMsg] = useState("");
 
   const sWord = ["hasina", "sanjeev", "bhanu", "rahul", "pravesh", "anish", "basanta"];
 
@@ -33,34 +47,37 @@ const WordGame = () => {
     setPlay(true);
     setShow(true);
     const newWord = createNewWord();
-    // console.log(newWord)
     const splittedWord = newWord.split('')
     const randomWord = scrambleWord(splittedWord);
-    console.log('randomWord is', randomWord.join(""));
+    const finalWord = randomWord.join("");
+    setMsg(finalWord);
   };
   return (
     <>
       <header>
         <h1>Guess the word</h1>
       </header>
+      <form onSubmit={handleSubmit(onSubmit)}>
       <section>
         <div className="gameArea">
-          <h3 className="msg"></h3>
+          <h3 className="msg">Guess The Name: {msg}</h3>
           {show ? (
             <input
               type="text"
               className="hidden"
               placeholder="input"
               value={input}
+              {...register("inputName")}
             />
           ) : (
             ""
           )}
-          <button className="btn" onClick={handleClick}>
+          <button type="submit" className="btn" onClick={handleClick}>
             {play ? "Guess" : "Click here to start"}
           </button>
         </div>
       </section>
+      </form>
     </>
   );
 };
