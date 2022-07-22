@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./WrodGame.css";
-
+//project  codes starts from here 
 const WordGame = () => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 const onSubmit = data =>
