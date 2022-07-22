@@ -6,7 +6,7 @@ const WordGame = () => {
   const [input, setInput] = useState();
   const [show, setShow] = useState(false);
 
-  const sWord = ["hasina", "sanjeev", "bhanu", "rahul"];
+  const sWord = ["hasina", "sanjeev", "bhanu", "rahul", "pravesh", "anish", "basanta"];
 
   const createNewWord = () => {
     const ranNum = Math.floor(Math.random() * sWord.length);
@@ -17,20 +17,26 @@ const WordGame = () => {
   };
 
   const scrambleWord = (randomWord) =>{
-    for (const i= randomWord.forEach(randomWord.length-1); i>0; i--)
-    {
-      const temp =randomWord[i];
-      console.log(temp);
+    const scrambledWord = []
+    let randomindex = []
+    for(let i=0; i=randomWord.length+10 && randomindex.length !== randomWord.length; i++){
+      const randompos = Math.floor(Math.random()*(randomWord.length - 0) + 0)
+      if(!randomindex.includes(randompos)){
+        randomindex.push(randompos)
+        scrambledWord.push(randomWord[randompos])
+      }
     }
+    return scrambledWord
   }
 
   const handleClick = () => {
     setPlay(true);
     setShow(true);
     const newWord = createNewWord();
-    console.log(newWord,"hiii")
-    const randomWord = scrambleWord();
-    // console.log(randomWord);
+    // console.log(newWord)
+    const splittedWord = newWord.split('')
+    const randomWord = scrambleWord(splittedWord);
+    console.log('randomWord is', randomWord.join(""));
   };
   return (
     <>
