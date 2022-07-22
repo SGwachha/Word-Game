@@ -16,10 +16,10 @@ const WordGame = () => {
     return newName;
   };
 
-  const scrambleWord = (arr) =>{
-    for (const i= arr.length-1; i>0; i--)
+  const scrambleWord = (randomWord) =>{
+    for (const i= randomWord.forEach(randomWord.length-1); i>0; i--)
     {
-      const temp =arr[i];
+      const temp =randomWord[i];
       console.log(temp);
     }
   }
@@ -28,9 +28,9 @@ const WordGame = () => {
     setPlay(true);
     setShow(true);
     const newWord = createNewWord();
-    // console.log(newWord);
-    const randomWord = scrambleWord(newWord.split(""));
-    console.log(randomWord);
+    console.log(newWord,"hiii")
+    const randomWord = scrambleWord();
+    // console.log(randomWord);
   };
   return (
     <>
