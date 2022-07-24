@@ -1,26 +1,25 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import React, { useEffect, useState } from "react";
 import "./WrodGame.css";
-//project  codes starts from here 
+
+// function of project
+
 const WordGame = () => {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-const onSubmit = data =>
-
-{console.log(data);
-if(data.inputName==="hasina"){
-  console.log("hii")
-}
-else{
-  console.log("bye")
-}
-
-}
   const [play, setPlay] = useState(false);
+  const [currentWord, setCurrentWord] = useState('')
   const [input, setInput] = useState();
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
+  const [milyo, setMilyo] = useState(false)
 
-  const sWord = ["hasina", "sanjeev", "bhanu", "rahul", "pravesh", "anish", "basanta"];
+  const sWord = [
+    "hasina",
+    "sanjeev",
+    "bhanu",
+    "rahul",
+    "pravesh",
+    "anish",
+    "basanta",
+  ];
 
   const createNewWord = () => {
     const ranNum = Math.floor(Math.random() * sWord.length);
@@ -30,54 +29,82 @@ else{
     return newName;
   };
 
-  const scrambleWord = (randomWord) =>{
-    const scrambledWord = []
-    let randomindex = []
-    for(let i=0; i=randomWord.length+10 && randomindex.length !== randomWord.length; i++){
-      const randompos = Math.floor(Math.random()*(randomWord.length - 0) + 0)
-      if(!randomindex.includes(randompos)){
-        randomindex.push(randompos)
-        scrambledWord.push(randomWord[randompos])
+  function scrambleWord(sWord) {
+    const scrambledWord = [];
+    let randomindex = [];
+    do {
+      const randompos = Math.floor(Math.random() * sWord.length);
+      if (!randomindex.includes(randompos)) {
+        randomindex.push(randompos);
+        scrambledWord.push(sWord[randompos]);
       }
-    }
-    return scrambledWord
+    } while (randomindex.length !== sWord.length);
+    return scrambledWord;
   }
 
+  
   const handleClick = () => {
     setPlay(true);
     setShow(true);
     const newWord = createNewWord();
-    const splittedWord = newWord.split('')
+    const splittedWord = newWord.split("");
     const randomWord = scrambleWord(splittedWord);
     const finalWord = randomWord.join("");
     setMsg(finalWord);
   };
+
+  const checkResult = () =>{
+    console.log('checkoing', input)
+    if(sWord.includes(input)){
+      setMilyo(true)
+    }
+    else{
+      setMilyo(false)
+      setInput('')
+      setCurrentWord(scrambleWord(
+        sWord[Math.floor(Math.random() * sWord.length)]
+      ))
+    }
+  }
+  
+  useEffect(()=>{   
+    setCurrentWord(scrambleWord(
+      sWord[Math.floor(Math.random() * sWord.length)]
+    ))
+  },[])
+
   return (
     <>
+      {/* Design of project */}
       <header>
         <h1>Guess the word</h1>
       </header>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <div
+        style={{
+          display: milyo ? "block" : "none"
+        }}
+      >milyo</div>
       <section>
         <div className="gameArea">
-          <h3 className="msg">Guess The Name: {msg}</h3>
           {show ? (
-            <input
-              type="text"
-              className="hidden"
-              placeholder="input"
-              value={input}
-              {...register("inputName")}
-            />
+            <>
+              <h3 className="msg">Guess The Name: {currentWord}</h3>
+              <input
+                type="text"
+                className="hidden"
+                placeholder="input"
+                value={input}
+                onChange = {e => setInput(e.target.value)}
+              />
+            </>
           ) : (
             ""
           )}
-          <button type="submit" className="btn" onClick={handleClick}>
+          <button className="btn" onClick={play ? checkResult : handleClick}>
             {play ? "Guess" : "Click here to start"}
           </button>
         </div>
       </section>
-      </form>
     </>
   );
 };
