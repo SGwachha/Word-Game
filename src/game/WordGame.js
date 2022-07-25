@@ -77,29 +77,50 @@ const WordGame = () => {
       <header>
         <h1>Guess the word</h1>
       </header>
-      <div
+
+      <section>
+        <div className="gameArea">
+          {/* <div
         style={{
           display: milyo ? "block" : "none"
         }}
-      >{milyo}</div>
-      <section>
-        <div className="gameArea">
-          {show ? (
-            <>
-              <h3 className="msg">Guess The Name: {currentWord}</h3>
-              <input
-                type="text"
-                className="hidden"
-                placeholder="input"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-            </>
-          ) : (
-            ""
-          )}
+      >{milyo}</div> */}
+          {
+            milyo ? (<>
+
+              <div
+                style={{
+                  display: milyo ? "block" : "none"
+                }}
+              >{milyo}</div>
+            </>) :
+              (<>
+
+                {show ? (
+                  <>
+                    <h3 className="msg">Guess The Name: {currentWord}</h3>
+                    <input
+                      type="text"
+                      className="hidden"
+                      placeholder="input"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                    />
+                  </>
+                ) : (
+                  ''
+                )}
+              </>)
+          }
+
           <button className="btn" onClick={play ? checkResult : handleClick}>
-            {play ? "Guess" : "Click here to start"}
+            {milyo ? (<>
+              Click here to start
+            </>) : (<>
+              {play ? "Guess" : "Click here to start"}
+            </>)
+            }
+
           </button>
         </div>
       </section>
