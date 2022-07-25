@@ -1,4 +1,3 @@
-// import './App.css';
 import WordGame from './game/WordGame';
 
 function App() {

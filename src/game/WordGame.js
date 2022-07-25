@@ -5,11 +5,11 @@ import "./WrodGame.css";
 
 const WordGame = () => {
   const [play, setPlay] = useState(false);
-  const [currentWord, setCurrentWord] = useState('')
+  const [currentWord, setCurrentWord] = useState("");
   const [input, setInput] = useState();
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
-  const [milyo, setMilyo] = useState(false)
+  const [milyo, setMilyo] = useState("");
 
   const sWord = [
     "hasina",
@@ -42,7 +42,6 @@ const WordGame = () => {
     return scrambledWord;
   }
 
-  
   const handleClick = () => {
     setPlay(true);
     setShow(true);
@@ -53,25 +52,24 @@ const WordGame = () => {
     setMsg(finalWord);
   };
 
-  const checkResult = () =>{
-    console.log('checkoing', input)
-    if(sWord.includes(input)){
-      setMilyo(true)
+  const checkResult = () => {
+    console.log("checkoing", input);
+    if (sWord.includes(input)) {
+      setMilyo("you are correct");
+    } else {
+      setMilyo("you are incorrect");
+      setInput("");
+      setCurrentWord(
+        scrambleWord(sWord[Math.floor(Math.random() * sWord.length)])
+      );
     }
-    else{
-      setMilyo(false)
-      setInput('')
-      setCurrentWord(scrambleWord(
-        sWord[Math.floor(Math.random() * sWord.length)]
-      ))
-    }
-  }
-  
-  useEffect(()=>{   
-    setCurrentWord(scrambleWord(
-      sWord[Math.floor(Math.random() * sWord.length)]
-    ))
-  },[])
+  };
+
+  useEffect(() => {
+    setCurrentWord(
+      scrambleWord(sWord[Math.floor(Math.random() * sWord.length)])
+    );
+  }, []);
 
   return (
     <>
@@ -83,7 +81,7 @@ const WordGame = () => {
         style={{
           display: milyo ? "block" : "none"
         }}
-      >milyo</div>
+      >{milyo}</div>
       <section>
         <div className="gameArea">
           {show ? (
@@ -94,7 +92,7 @@ const WordGame = () => {
                 className="hidden"
                 placeholder="input"
                 value={input}
-                onChange = {e => setInput(e.target.value)}
+                onChange={(e) => setInput(e.target.value)}
               />
             </>
           ) : (
