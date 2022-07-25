@@ -1,9 +1,9 @@
-import WordGame from './game/WordGame';
+import React from "react";
 
-function App() {
+function App({children}) {
   return (
     <>
-      <WordGame />
+      {children}
     </>
   );
 }
