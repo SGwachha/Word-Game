@@ -1,14 +1,22 @@
-import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import {React,useEffect} from "react";
+
+import {  useNavigate } from "react-router-dom";
 import "./Design.css";
 
 const Correct = () => {
   const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate('/')
+    }, 1000)
+  }, [])
+ 
+
 
   return (
-    <div className="gameArea1">
+    <div className="gameArea1" >
       <h3>You are correct</h3>
-      <button
+      {/* <button
         className="btn"
         onClick={() => {
           navigate("/");
@@ -16,7 +24,7 @@ const Correct = () => {
       >
         {" "}
         CLick Here to start
-      </button>
+      </button> */}
     </div>
   );
 };

@@ -1,15 +1,20 @@
-import React from "react";
+import { React, useEffect } from "react";
+
+import { useNavigate } from "react-router-dom";
 import "./Design.css";
-import { Navigate, useNavigate } from "react-router-dom";
 
 const Incorrect = () => {
-
   const navigate = useNavigate();
+  useEffect(() => {
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  }, []);
 
   return (
     <div className="gameArea1">
       <h3>You are incorrect</h3>
-      <button
+      {/* <button
         className="btn"
         onClick={() => {
           navigate("/");
@@ -17,7 +22,7 @@ const Incorrect = () => {
       >
         {" "}
         CLick Here to start
-      </button>
+      </button> */}
     </div>
   );
 };
