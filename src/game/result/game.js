@@ -9,7 +9,6 @@ const Game = () => {
   const [input, setInput] = useState();
   const [show, setShow] = useState(false);
   const [msg, setMsg] = useState("");
-  const [milyo, setMilyo] = useState("");
 
   const sWord = [
     "hasina",
@@ -19,6 +18,18 @@ const Game = () => {
     "pravesh",
     "anish",
     "basanta",
+    "luv",
+    "jeevan",
+    "sandesh",
+    "pushpa",
+    "abhinav",
+    "keshav",
+    "sushil",
+    "tika",
+    "amrita",
+    "biplap",
+    "saroj",
+    "nabin",
   ];
 
   const createNewWord = () => {
@@ -59,9 +70,9 @@ const Game = () => {
   const checkResult = () => {
     console.log("checkoing", input);
     if (sWord.includes(input)) {
-    navigate("/correct")
+      navigate("/correct");
     } else {
-    navigate("/incorrect")
+      navigate("/incorrect");
     }
   };
 
