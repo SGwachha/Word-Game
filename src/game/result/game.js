@@ -33,6 +33,7 @@ const Game = () => {
   ];
 
   const createNewWord = () => {
+    //function calling
     const ranNum = Math.floor(Math.random() * sWord.length);
     const newName = sWord[ranNum];
     return newName;
@@ -78,6 +79,7 @@ const Game = () => {
 
   return (
     <>
+      {/* conditional rendering and design */}
       {show ? (
         <>
           <h3 className="msg">Guess The Name: {currentWord}</h3>
