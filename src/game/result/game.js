@@ -80,7 +80,6 @@ const Game = () => {
   return (
     <>
       {/* conditional rendering and design */}
-      {/* remove this */}
       {show ? (
         <>
           <h3 className="msg">Guess The Name: {currentWord}</h3>
@@ -95,6 +94,7 @@ const Game = () => {
       ) : (
         ""
       )}
+      {/* conditional rendering for button */}
       <button className="btn" onClick={play ? checkResult : handleClick}>
         {play ? "Guess" : "Click here to start"}
       </button>

@@ -12,7 +12,7 @@ const Correct = () => {
   }, []);
 
   return (
-    //shows you are
+    //shows you are correct
     <div className="gameArea1">
       <h3>You are correct</h3>
 
