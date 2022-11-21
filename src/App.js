@@ -4,6 +4,7 @@ function App({children}) {
   return (
     <>
       {children}
+      {/* commit message */}
     </>
   );
 }
